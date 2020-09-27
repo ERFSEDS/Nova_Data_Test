@@ -5,4 +5,4 @@ file(GLOB_RECURSE sources CONFIGURE_DEPENDS "src/*.cpp")
 
 add_executable(test_data ${sources})
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}>/vendor/glm)
+include_directories("vendor/glm")
