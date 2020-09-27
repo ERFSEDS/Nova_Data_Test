@@ -1,7 +1,9 @@
 
-#include<iostream>
+#include <iostream>
+
+#include "Body.h"
 
 int main(int argc, char** argv){
-   std::cout << "Hello World!" << std::endl;
-   return 0;
+   std::cout << "acos of 0.5" << glm::degrees(glm::acos(0.5)) << std::endl;
+   return EXIT_SUCCESS;
 }
