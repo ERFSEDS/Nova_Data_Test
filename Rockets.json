@@ -1,0 +1,49 @@
+[
+	{
+		"name": "Test Rocket",
+		"mass": 1,
+		"position": [0, 0, 0],
+		"delay": 0,
+		"engines":
+		[
+			{
+				"name": "Engine 1",
+				"position": [0, 0, 0],
+				"direction": [0, -1, 0],
+				"thrust_curve":
+				[
+					{
+						"time": 0.0,
+						"thrust": 0.0
+					},
+					{
+						"time": 0.00001,
+						"thrust": 1.0
+					},
+					{
+						"time": 0.0002,
+						"thrust": 1.2
+					},
+					{
+						"time": 0.3,
+						"thrust": 1.25
+					},
+					{
+						"time": 0.8,
+						"thrust": 1.25
+					},
+					{
+						"time": 1.0,
+						"thrust": 1.1
+					},
+					{
+						"time": 1.1,
+						"thrust": 0.0
+					}
+
+				]
+			}
+		]
+	}
+]
+
