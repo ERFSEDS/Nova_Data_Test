@@ -22,9 +22,9 @@ namespace erfseds_nova {
 				for (int i = 0; i < root.size(); i++)
 				{
 					NOVA_TRACE("Beginning read of body at root index {}", i);
-					auto element = root.at(i).get_object();
+					auto element = root.at(i);
 					if (!element.is_object()) return std::string("root array index ") + std::to_string(i) + " must be an object";
-					std
+					
 				}
 
 				auto length = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start).count();
