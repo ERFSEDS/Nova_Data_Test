@@ -1,1 +1,4 @@
-Nova Test Data Generator-530189:[09/28/20 09:22:48.002] trace: Logging Initalized
+Nova Test Data Generator-241013:[09/30/20 09:41:14.886] trace: Logging Initalized
+Nova Test Data Generator-241013:[09/30/20 09:41:14.886] trace: About to open rockets file "Rockets.json"
+Nova Test Data Generator-241013:[09/30/20 09:41:14.887] trace: Beginning read of ship at root index 0
+Nova Test Data Generator-241013:[09/30/20 09:41:14.887] error: Attempted to access an element of a JSON array that is beyond its length.

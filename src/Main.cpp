@@ -22,7 +22,9 @@ int main(int argc, const char** argv)
 			("o,out_file", "Where the output data is written (in csv format)", cxxopts::value<std::string>()->default_value("TestData.csv"))
 			("i,input_file", "A json file containing an array of rocket objects to simulate", cxxopts::value<std::string>()->default_value("Rockets.json"))
 
-			("s,step_size", "How large integration step sizes are in seconds. Lover values yield higher precision but may take more time", cxxopts::value<double>()->default_value("0.0001"))
+			("s,step_size", "How large are the time steps between reported values. Lover values yield higher precision but may take more time", cxxopts::value<double>()->default_value("0.0001"))
+			("oversampling_rate", "Determines how many sub-updates are applied between reported values", cxxopts::value<int>()->default_value("10"))
+
 			("d,debug", "Enable debug logging", cxxopts::value<bool>()->default_value("false"))
 			("h,help", "Print this help menu")
 		;
@@ -50,15 +52,23 @@ int main(int argc, const char** argv)
 				}
 
 				params.StepSize = result["step_size"].as<double>();
+				params.OversamplingRate = result["oversampling_rate"].as<int>();
+				if (params.OversamplingRate <= 0)
+				{
+					params.OversamplingRate = 1;
+				}
+
 				params.OutputFile = result["out_file"].as<std::string>();
 
-				const auto error = Parser::ParseBodyJSON(inputJSON, params.Bodies);
+				const auto error = Parser::ParseShipJSON(inputJSON, params.Ships);
 				if (error.length())
 				{
 					throw std::logic_error("Failed to parse rocket JSON! Error: " + error);
 				}
 
 				Simulation simulation(params);
+
+				simulation.Run();
 
 			}
 		} catch (const std::exception& e) {

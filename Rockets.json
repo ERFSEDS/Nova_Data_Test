@@ -2,13 +2,14 @@
 	{
 		"name": "Test Rocket",
 		"mass": 1,
-		"position": [0, 0, 0],
+		"position": [0, 100, 0],
 		"delay": 0,
 		"engines":
 		[
 			{
-				"name": "Engine 1",
-				"position": [0, 0, 0],
+				"dry_mass": 0.1,
+				"wet_mass": 1.0,
+				"offset": [0, 0, 0],
 				"direction": [0, -1, 0],
 				"thrust_curve":
 				[
