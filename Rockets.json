@@ -2,15 +2,18 @@
 	{
 		"name": "Test Rocket",
 		"mass": 1,
-		"position": [0, 100, 0],
+		"position": [0, 0, 0],
 		"delay": 0,
 		"engines":
 		[
 			{
-				"dry_mass": 0.1,
-				"wet_mass": 1.0,
+				"name": "Aerotech G80",
+				"dry_mass": 0.0596,
+				"wet_mass": 0.1075,
 				"offset": [0, 0, 0],
 				"direction": [0, -1, 0],
+				"total_impulse": 94.83,
+				"data-gotten-from": "https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjTrt2CnpTsAhVQmlkKHemBB6wQFjAEegQIBBAC&url=http%3A%2F%2Fnar.org%2FSandT%2Fpdf%2FAerotech%2FG80.pdf&usg=AOvVaw2hmw2hW2MKOaTAdwD5t8_D",
 				"thrust_curve":
 				[
 					{
@@ -18,29 +21,106 @@
 						"thrust": 0.0
 					},
 					{
-						"time": 0.00001,
-						"thrust": 1.0
+						"time": 0.006,
+						"thrust": 84.371
 					},
 					{
-						"time": 0.0002,
-						"thrust": 1.2
+						"time": 0.018,
+						"thrust": 118.230
 					},
 					{
-						"time": 0.3,
-						"thrust": 1.25
+						"time": 0.027,
+						"thrust": 109.378
 					},
 					{
-						"time": 0.8,
-						"thrust": 1.25
+						"time": 0.037,
+						"thrust": 101.350
 					},
 					{
-						"time": 1.0,
-						"thrust": 1.1
+						"time": 0.042,
+						"thrust": 105.565
 					},
 					{
-						"time": 1.1,
+						"time": 0.059,
+						"thrust": 98.370
+					},
+					{
+						"time": 0.113,
+						"thrust": 95.821
+					},
+					{
+						"time": 0.185,
+						"thrust": 96.252
+					},
+					{
+						"time": 0.277,
+						"thrust": 94.556
+					},
+					{
+						"time": 0.404,
+						"thrust": 94.978
+					},
+					{
+						"time": 0.526,
+						"thrust": 91.165
+					},
+					{
+						"time": 0.671,
+						"thrust": 87.100
+					},
+					{
+						"time": 0.792,
+						"thrust": 82.675
+					},
+					{
+						"time": 0.885,
+						"thrust": 77.166
+					},
+					{
+						"time": 0.943,
+						"thrust": 73.353
+					},
+					{
+						"time": 0.971,
+						"thrust": 68.266
+					},
+					{
+						"time": 0.997,
+						"thrust": 57.237
+					},
+					{
+						"time":  1.030,
+						"thrust": 48.337
+					},
+					{
+						"time":  1.059,
+						"thrust": 40.279
+					},
+					{
+						"time":  1.085,
+						"thrust": 27.986
+					},
+					{
+						"time":  1.112,
+						"thrust": 17.811
+					},
+					{
+						"time":  1.144,
+						"thrust": 10.175
+					},
+					{
+						"time":  1.168,
+						"thrust": 5.512
+					},
+					{
+						"time":  1.182,
+						"thrust": 2.968
+					},
+					{
+						"time":  1.210,
 						"thrust": 0.0
 					}
+
 
 				]
 			}

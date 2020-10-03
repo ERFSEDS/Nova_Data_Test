@@ -57,8 +57,14 @@ int main(int argc, const char** argv)
 				{
 					params.OversamplingRate = 1;
 				}
-
-				params.OutputFile = result["out_file"].as<std::string>();
+				const auto& outputPath = result["out_file"].as<std::string>();
+				params.OutputFile.open(outputPath, std::ios::out);
+				if (!params.OutputFile.good())
+				{
+					NOVA_ERROR("Failed to open output file \"{}\"", outputPath);
+					return EXIT_FAILURE;
+				}
+				NOVA_TRACE("Successfully opened output file \"{}\"", outputPath);
 
 				const auto error = Parser::ParseShipJSON(inputJSON, params.Ships);
 				if (error.length())

@@ -1,6 +1,7 @@
 #pragma once
 
-#include <filesystem>
+#include <fstream>
+#include <memory>
 #include <vector>
 #include <glm/glm.hpp>
 
@@ -17,7 +18,7 @@ namespace erfseds_nova {
 		};
 
 		struct SimulationParameters {
-			std::filesystem::path OutputFile;
+			std::fstream OutputFile;
 			std::vector<Ship> Ships;
 			double StepSize;
 			int OversamplingRate;

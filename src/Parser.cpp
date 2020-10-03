@@ -64,15 +64,16 @@ namespace erfseds_nova {
 
 					Engine engine(curve);
 
-					engine.m_Direction = ReadDVec3(engineJSON, "direction");
-					engine.m_Offset = ReadDVec3(engineJSON, "offset");
-					engine.m_DryMass = engineJSON["dry_mass"].get_double();
-					engine.m_WetMass = engineJSON["wet_mass"].get_double();
-
-
+					engine.Direction = ReadDVec3(engineJSON, "direction");
+					engine.Offset = ReadDVec3(engineJSON, "offset");
+					engine.DryMass = engineJSON["dry_mass"].get_double();
+					engine.WetMass = engineJSON["wet_mass"].get_double();
+					engine.ExpectedImpulse = engineJSON["total_impulse"].get_double();
+					engine.Mass = engine.WetMass;
 					ship.m_Engines.push_back(engine);
+
 					NOVA_TRACE("Successfully parsed engine wet mass: {}, dry mass: {}, direction: [{}, {}, {}], offset: [{}, {}, {}], and {} thrust curve points", 
-						engine.m_WetMass, engine.m_DryMass, engine.m_Direction.x, engine.m_Direction.y, engine.m_Direction.z, engine.m_Offset.x, engine.m_Offset.y, engine.m_Offset.z, engine.m_ThrustCurve.DataPoints());
+						engine.WetMass, engine.DryMass, engine.Direction.x, engine.Direction.y, engine.Direction.z, engine.Offset.x, engine.Offset.y, engine.Offset.z, engine.ForceCurve.DataPoints());
 				}
 				NOVA_TRACE("Successfully parsed ship #{} - \"{}\"  ", shipIndex, ship.m_Name);
 

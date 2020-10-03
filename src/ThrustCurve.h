@@ -48,13 +48,32 @@ namespace erfseds_nova {
 				{
 					throw "KeyFrameManager must have at least one key frame to manage!";
 				}
+				for (int i = 1; i < data.size(); i++)
+				{
+					//All time values must be increasing+
+					if (data[i].Time < data[i - 1].Time)
+					{
+						NOVA_ERROR("Timestamps at index {} and {} are not sorted! Expected second value {} to be larger than {}", i - 1, i, data[i].Time, data[i - 1].Time);
+						throw "KeyFrameManager must have all keyframes sorted from lowest to highest chronologically";
+					}
+				}
 			}
 
 			T Get(TimeType time)
 			{
+				//NOVA_TRACE("Getting value for time {}", time);
+
 				//Check the extremes and clamp the out of range values to the first or last one
-				if (m_Data[0].Time <= time) return m_Data[0].Value;
-				if (m_Data[m_Data.size() - 1].Time >= time) return m_Data[m_Data.size() - 1].Value;
+				if (time <= m_Data[0].Time)
+				{
+					//NOVA_TRACE("Aborting early since time is less than the first keyframe value: {}", time);
+					return m_Data[0].Value;
+				}
+				if (time >= m_Data[m_Data.size() - 1].Time)
+				{
+					//NOVA_TRACE("Aborting early since time is greater than the last keyframe value: {}", time);
+					return m_Data[m_Data.size() - 1].Value;
+				}
 
 				//We need to interpolate between two values
 				//So find the pair of keyframes that surround the time passed in
@@ -66,6 +85,7 @@ namespace erfseds_nova {
 					{
 						const T& a = m_Data[i - 1].Value;
 						const T& b = m_Data[i].Value;
+						//NOVA_TRACE("Using a and b = [{}, {}]", a, b);
 
 						//Interpolate between the two values based on time
 						return map(time, lastTime, nowTime, a, b);
