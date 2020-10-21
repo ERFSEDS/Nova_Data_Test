@@ -11,23 +11,25 @@ namespace erfseds_nova {
 
 		void Simulation::Run()
 		{
-			double time = 0.0;
 			SimulationData data;
 			data.DT = m_Params.StepSize / m_Params.OversamplingRate;
+			data.Time = 0;
 			std::size_t i = 0;
 
 			m_Params.OutputFile << "TimeStep,StepNum,AccelX,AccelY,AccelZ,GryoX,GryoY,GryoZ,Pressure,TrueAltitude,TrueAngle" << std::endl;
+			auto start = std::chrono::high_resolution_clock::now();
+
 			while (true)
 			{
 				data.Gravity = { 0.0, -9.81, 0.0 };
-				data.Time = time;
 
 				for (auto& ship : m_Params.Ships)
 				{
 					ship.Update(data);
 				}
 
-				time += data.DT;
+				data.Time += data.DT;
+
 				if (i % m_Params.OversamplingRate == 0)
 				{
 					for (const auto& ship : m_Params.Ships)
@@ -46,6 +48,13 @@ namespace erfseds_nova {
 			}
 
 			NOVA_INFO("Simulation Complete");
+			auto micros = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start).count();
+			auto seconds = micros / 1000000.0;
+
+			NOVA_TRACE("Simulation took {:.5} seconds", seconds);
+			auto iterations = data.Time / data.DT;
+			NOVA_TRACE("Computed {} iterations ({} iterations per second)", static_cast<std::uint64_t>(iterations), iterations / seconds);
+
 			for (auto& ship : m_Params.Ships)
 			{
 				for (auto& engine : ship.GetEngines())

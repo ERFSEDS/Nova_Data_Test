@@ -12,7 +12,7 @@ namespace erfseds_nova {
 			if (m_Position.y <= 0.0 && m_Force.y < 0.0)
 			{
 				//Crude normal force approximation making objects on the ground with not enough thrust stay on the ground
-				NOVA_TRACE("on ground at T={}, force {}", data.Time, m_Force.y);
+				//NOVA_TRACE("on ground at T={}, force {}", data.Time, m_Force.y);
 				m_Force.y = 0.0;
 			}
 
@@ -75,7 +75,6 @@ namespace erfseds_nova {
 
 			//NOVA_TRACE("Thrust {}N, totalImpulseRatio {}, mass {}", thrust, totalImpulseRatio, m_Mass);
 		}
-bbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbvvvvvvvc
 
 	}
 }

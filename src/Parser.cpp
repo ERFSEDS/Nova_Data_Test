@@ -18,7 +18,7 @@ namespace erfseds_nova {
 			return { x, y, z };
 		}
 
-		std::string Parser::ParseShipJSON(const std::filesystem::path& path, std::vector<Ship>& result)
+		std::string Parser::ParseShipJSON(const std::string& path, std::vector<Ship>& result)
 		{
 			NOVA_TRACE("About to open rockets file {}", path);
 
@@ -81,7 +81,7 @@ namespace erfseds_nova {
 			}
 
 			auto length = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - start).count();
-			NOVA_TRACE("Parsed file successfully in {:.1} milliseconds", length / 1000.0);
+			NOVA_TRACE("Parsed file successfully in {:.5} milliseconds", length / 1000.0);
 			return "";//Success
 		}
 

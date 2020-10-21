@@ -44,7 +44,7 @@ int main(int argc, const char** argv)
 			{
 				SimulationParameters params;
 
-				std::filesystem::path inputJSON = result["input_file"].as<std::string>();
+				std::string inputJSON = result["input_file"].as<std::string>();
 				if (!std::filesystem::exists(inputJSON))
 				{
 					NOVA_ERROR("Failed to find input file {}", inputJSON);

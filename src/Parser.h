@@ -13,7 +13,7 @@ namespace erfseds_nova {
 		{
 			//Parses the json string into a vector of body structs, returning an error string if the json cannot be parsed. 
 			//Returns an empty string on success
-			static std::string ParseShipJSON(const std::filesystem::path& path, std::vector<Ship>& result);
+			static std::string ParseShipJSON(const std::string& path, std::vector<Ship>& result);
 		};
 
 	}
